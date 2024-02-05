@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #body {
+            overflow: visible;
+        }
+    </style>
+</head>
+
+<body id="body">
+    <div> <img
+            src="https://cdn.friendsoftheearth.uk/sites/default/files/styles/body_text_image/public/bee_illus_1_White-tailed-bumblebee_XSM.jpg?itok=pCfMoEkZ"
+            alt="error-image" style="position: absolute; width: 400px; height: 300px; " id="ab"></div>
+    <script>
+        var box = document.getElementById('ab');
+        // var x=30;
+        var top_bot = parseInt(localStorage.getItem("topbot")) ||0;
+        var lef_rig = parseInt(localStorage.getItem("lefrig")) ||0;
+        box.style.right = lef_rig + 'px';
+        box.style.bottom = top_bot + 'px';
+        document.addEventListener('keydown', function (e) {
+            if (e.keyCode == 37) {
+                localStorage.setItem("lefrig", lef_rig);
+                box.style.right = lef_rig + 'px'
+                box.style.transform = 'rotate(270deg)'
+                lef_rig += 7;
+            }
+            else if (e.keyCode == 38) {
+                localStorage.setItem("topbot", top_bot);
+                box.style.bottom = top_bot + 'px'
+                box.style.transform = 'rotate(-0deg)'
+                // box.style.transitionDelay='0.5s'
+                top_bot += 7;
+            }
+            else if (e.keyCode == 39) {
+                localStorage.setItem("lefrig", lef_rig);
+                box.style.right = lef_rig + 'px'
+                box.style.transform = 'rotate(90deg)'
+                lef_rig -= 7;
+            }
+            else if (e.keyCode == 40) {
+                localStorage.setItem("topbot", top_bot);
+                box.style.bottom = top_bot + 'px'
+                box.style.transform = 'rotate(180deg)'
+                top_bot -= 7;
+            }
+        })
+
+    </script>
+</body>
+
+</html>
